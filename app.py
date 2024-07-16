@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app, resources={r"/transcribe": {"origins": ["http://localhost:3000","https://careermate.vercel.app"]}})
 # Load the Whisper model
-model = whisper.load_model('base')
+model = whisper.load_model('base.en')
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe_audio():
@@ -39,7 +39,8 @@ def transcribe_audio():
         # Return the result as JSON
         return jsonify(result)
 
+
 if __name__ == '__main__':
-    # port = int(os.getenv('PORT', 5000))  # Default to 5000 if PORT environment variable is not set
-    # app.run(debug=True, host='0.0.0.0', port=port)
-    app.run()
+    port = int(os.getenv('PORT', 5000))  # Default to 5000 if PORT environment variable is not set
+    app.run(debug=True, host='0.0.0.0', port=port)
+    # app.run()
