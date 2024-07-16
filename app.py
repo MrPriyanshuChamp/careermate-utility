@@ -3,6 +3,9 @@ from flask_cors import CORS
 import whisper
 import os
 import tempfile
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Initialize the Flask app
 app = Flask(__name__)
@@ -37,5 +40,5 @@ def transcribe_audio():
         return jsonify(result)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # Default to 5000 if PORT environment variable is not set
+    port = int(os.getenv('PORT', 5000))  # Default to 5000 if PORT environment variable is not set
     app.run(debug=True, host='0.0.0.0', port=port)
