@@ -40,5 +40,6 @@ def transcribe_audio():
         return jsonify(result)
 
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 5000))  # Default to 5000 if PORT environment variable is not set
-    app.run(debug=True, host='0.0.0.0', port=port)
+    # port = int(os.getenv('PORT', 5000))  # Default to 5000 if PORT environment variable is not set
+    # app.run(debug=True, host='0.0.0.0', port=port)
+    app.run()
